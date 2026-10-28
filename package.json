@@ -1,0 +1,9 @@
+{
+  "name": "wahjora-digital",
+  "private": true,
+  "type": "module",
+  "description": "WAHJORA Digital website: single-file static site plus an optional Claude-powered chat function",
+  "dependencies": {
+    "@anthropic-ai/sdk": "latest"
+  }
+}

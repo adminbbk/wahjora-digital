@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MARSA · Gulf Diver 300</title>
+<meta name="description" content="MARSA Gulf Diver 300, a 42 mm bronze dive watch rated to 300 metres. A concept landing page by Wahjora Digital.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_shared/motion.css">
+<style>
+:root{--abyss:#04121c;--deep:#082a3a;--teal:#0f5c66;--lume:#b8f5c8;--bronze:#c98d52;--foam:#e8f3f2;
+  --f:'Archivo',system-ui,sans-serif}
+body{background:var(--abyss);color:var(--foam);font:350 17px/1.6 var(--f);font-stretch:100%}
+a{color:inherit}
+.curtain{background:var(--teal)}
+.wide{font-stretch:125%;font-weight:800;text-transform:none;letter-spacing:-.01em}
+nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:20px clamp(18px,4vw,56px)}
+nav .logo{font:800 22px var(--f);font-stretch:125%;letter-spacing:.24em;text-decoration:none}
+nav .clock{font-variant-numeric:tabular-nums;font-size:14px;opacity:.85}
+nav .clock b{color:var(--lume);font-weight:600}
+
+/* depth gauge, fixed */
+.gauge{position:fixed;right:clamp(12px,2vw,28px);top:50%;translate:0 -50%;z-index:40;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:12px;font-variant-numeric:tabular-nums}
+.gauge .rail{width:2px;height:38vh;background:rgba(232,243,242,.15);position:relative;border-radius:2px}
+.gauge .rail i{position:absolute;left:-4px;top:-5px;width:10px;height:10px;border-radius:50%;background:var(--lume);box-shadow:0 0 14px var(--lume);transform:translateY(calc(var(--d,0)*38vh))}
+.gauge b{font-weight:700;color:var(--lume)}
+@media(max-width:760px){.gauge{display:none}}
+
+.hero{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,18,28,.9),rgba(4,18,28,0) 60%),linear-gradient(0deg,var(--abyss),transparent 28%);pointer-events:none}
+.hero-copy{position:absolute;z-index:2;left:clamp(18px,5vw,80px);top:50%;translate:0 -46%;max-width:640px}
+.hero h1{font-size:clamp(46px,7vw,112px);line-height:.92;margin:0 0 22px}
+.hero p{max-width:440px;opacity:.85;margin:0 0 30px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:999px;background:var(--lume);color:var(--abyss);font:700 15px var(--f);text-decoration:none;border:0;cursor:pointer}
+.btn.ghost{background:none;color:var(--foam);border:1px solid rgba(232,243,242,.35);margin-left:10px}
+@media(max-width:760px){.hero::after{background:linear-gradient(0deg,var(--abyss) 10%,rgba(4,18,28,.2) 70%)}.hero-copy{top:auto;bottom:36px;translate:none}.btn.ghost{margin:10px 0 0}}
+
+/* caustics over sections */
+.caustic{position:absolute;inset:0;pointer-events:none;opacity:.22;mix-blend-mode:screen}
+
+/* turntable */
+.turn .scrub-stick{background:radial-gradient(ellipse at 50% 55%,var(--deep),var(--abyss) 70%)}
+.turn h2{position:absolute;z-index:3;left:50%;translate:-50% 0;top:9vh;margin:0;font-size:clamp(30px,4vw,62px);text-align:center;white-space:nowrap}
+.chap.call{position:absolute;z-index:3;display:flex;align-items:center;gap:14px;max-width:320px}
+.call::before{content:"";flex:0 0 70px;height:1px;background:var(--lume);order:var(--o,0)}
+.call div b{display:block;font-size:22px;font-stretch:125%;font-weight:700;color:var(--lume)}
+.call div span{font-size:14px;opacity:.85}
+.k1{left:6vw;top:34vh}.k2{right:6vw;top:30vh;--o:2;text-align:right}.k3{left:6vw;bottom:16vh}.k4{right:6vw;bottom:16vh;--o:2;text-align:right}
+@media(max-width:760px){.turn h2{white-space:normal;width:90vw;font-size:30px}.call{left:20px!important;right:20px!important;top:auto!important;bottom:8vh!important;max-width:none;background:rgba(4,18,28,.75);padding:14px 16px;border-radius:12px;text-align:left!important}.call::before{display:none}}
+
+/* macro zoom */
+.macro.zoom-sec .zoom-stick{--zo:30% 72%}
+.macro .zoom-stick::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,18,28,.85),transparent 55%)}
+.macro .ztxt{position:absolute;z-index:2;left:clamp(18px,5vw,80px);top:50%;translate:0 -50%;max-width:480px}
+.macro h2,.tags h2,.reserve h2,.over h2{font-size:clamp(36px,5vw,80px);line-height:.95;margin:0 0 18px}
+.counter{font-size:clamp(70px,10vw,160px);font-stretch:125%;font-weight:800;color:var(--lume);line-height:1;font-variant-numeric:tabular-nums;margin:0}
+
+/* dive tags (flip) */
+.tags{position:relative;padding:clamp(90px,16vh,170px) clamp(18px,5vw,80px);overflow:hidden}
+.tags .lede{max-width:520px;opacity:.85;margin:0 0 60px}
+.flip-deck.six{grid-template-columns:repeat(3,1fr)}
+.flip{height:280px}
+.flip:nth-child(3n+2){translate:0 40px}
+.flip-face{border-radius:20px}
+.flip-front{background:linear-gradient(150deg,rgba(15,92,102,.55),rgba(8,42,58,.85));border:1px solid rgba(184,245,200,.18);padding:26px;display:flex;flex-direction:column;justify-content:space-between;}
+.flip-front small{font-size:13px;opacity:.75}
+.flip-front b{font-size:clamp(40px,4vw,60px);font-stretch:125%;font-weight:800;line-height:1;color:var(--foam)}
+.flip-front b em{font-style:normal;font-size:.45em;color:var(--lume);margin-left:6px}
+.flip-back{background:var(--bronze);color:var(--abyss);padding:26px;display:flex;flex-direction:column;justify-content:space-between}
+.flip-back h3{margin:0;font-size:22px;font-stretch:125%}
+.flip-back p{margin:0;font-size:15px}
+@media(max-width:860px){.flip-deck.six{grid-template-columns:1fr 1fr}.flip{height:230px}.flip:nth-child(3n+2){translate:none}.flip-front b{font-size:34px}}
+@media(max-width:520px){.flip-deck.six{grid-template-columns:1fr}}
+
+/* over-under */
+.over{position:relative;height:200vh}
+.over .stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.over .layer{position:absolute;inset:0}
+.over .layer img{width:100%;height:100%;object-fit:cover}
+.over .top{clip-path:inset(0 0 calc(100% - var(--wl,48%)) 0)}
+.over .bot{clip-path:inset(var(--wl,48%) 0 0 0)}
+.over .bot img{filter:saturate(1.15) hue-rotate(-6deg)}
+.over .line{position:absolute;left:0;right:0;top:var(--wl,48%);height:2px;background:linear-gradient(90deg,transparent,rgba(232,243,242,.8),transparent);z-index:2}
+.over .otxt{position:absolute;z-index:3;left:clamp(18px,5vw,80px);top:12vh;max-width:520px;padding:26px 30px;border-radius:20px;background:rgba(4,18,28,.78)}
+
+/* dials */
+.dials{padding:clamp(90px,14vh,150px) clamp(18px,5vw,80px)}
+.dials h2{font-size:clamp(34px,4.6vw,72px);line-height:.95;margin:0 0 40px}
+.dial-row{display:flex;gap:18px;flex-wrap:wrap}
+.dial{display:flex;align-items:center;gap:14px;padding:14px 20px 14px 14px;border-radius:999px;border:1px solid rgba(232,243,242,.22);background:none;color:inherit;font:inherit;cursor:pointer}
+.dial i{width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 3px var(--bronze)}
+.dial[aria-pressed=true]{border-color:var(--lume)}
+.dial-view{margin-top:40px;border-radius:24px;overflow:hidden;height:60vh;position:relative}
+.dial-view img{width:100%;height:100%;object-fit:cover;transition:filter 1s ease}
+
+.reserve{padding:clamp(90px,14vh,150px) clamp(18px,5vw,80px);display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:end;border-top:1px solid rgba(232,243,242,.1)}
+.reserve .big{font-size:clamp(90px,14vw,220px);font-stretch:125%;font-weight:800;line-height:.85;color:var(--bronze);margin:0}
+@media(max-width:860px){.reserve{grid-template-columns:1fr}}
+footer{padding:30px clamp(18px,5vw,80px) 50px;font-size:14px;opacity:.75;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(232,243,242,.1)}
+</style>
+</head>
+<body>
+<a class="wj-back" href="../../index.html#/work">← Wahjora Digital</a>
+<div class="curtain" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<nav aria-label="MARSA"><a class="logo" href="#top">MARSA</a><span class="clock">Dubai <b id="clock">--:--:--</b></span></nav>
+<div class="gauge" aria-hidden="true"><span>0 m</span><div class="rail" id="rail"><i></i></div><span><b id="depth">0</b> m</span></div>
+<main id="top">
+<section class="hero" aria-label="Introduction">
+  <canvas class="depth" id="heroDepth" aria-label="The MARSA bronze dive watch with a teal dial resting on wet black rock"></canvas>
+  <canvas class="motes" id="bubbles" aria-hidden="true"></canvas>
+  <div class="hero-copy">
+    <h1 class="wide" data-split>Built for the Gulf, below it.</h1>
+    <p>A 42 mm bronze diver rated to 300 metres. Scroll down and the gauge on the right counts your dive.</p>
+    <a class="btn" href="#reserve" data-magnetic>Reserve yours</a><a class="btn ghost" href="#turn">See it turn</a>
+  </div>
+</section>
+
+<section class="turn scrub-sec" id="turn" aria-label="The watch, filmed turning on wet stone">
+  <div class="scrub-stick">
+    <img class="poster" src="img/hero.webp" alt="">
+    <canvas class="scrub"></canvas>
+    <canvas class="caustic" id="caustic1" aria-hidden="true"></canvas>
+    <h2 class="wide">Every angle, wet.</h2>
+    <div class="chap call k1" data-at="0-0.28"><div><b>CuSn8 bronze</b><span>Turns from rose to deep brown with every dive. No two age alike.</span></div></div>
+    <div class="chap call k2" data-at="0.25-0.52"><div><b>One-way bezel</b><span>A knock can only shorten your dive time, never extend it.</span></div></div>
+    <div class="chap call k3" data-at="0.5-0.78"><div><b>Screw-down crown</b><span>Twin gaskets. Sealed to 30 bar.</span></div></div>
+    <div class="chap call k4" data-at="0.76-1.01"><div><b>Swiss lume</b><span>Glows green after one minute in the sun.</span></div></div>
+  </div>
+</section>
+
+<section class="macro zoom-sec" data-zoom="2.4" aria-label="Macro view of the bezel and crown">
+  <div class="zoom-stick">
+    <img src="img/macro.webp" alt="Macro of the knurled bronze crown and black ceramic bezel with water droplets" loading="lazy">
+    <div class="ztxt"><p class="counter" id="bar">0</p><h2 class="wide" data-split>bar of pressure, held shut.</h2><p>The crown screws down onto two gaskets. Keep scrolling and watch the pressure climb.</p></div>
+  </div>
+</section>
+
+<section class="tags" aria-labelledby="tH">
+  <h2 id="tH" class="wide" data-split>The numbers.</h2>
+  <p class="lede">Six dive tags. Turn each one over for the detail.</p>
+  <div class="flip-deck six">
+    <div class="flip" aria-label="Case, tap to turn"><div class="flip-in"><div class="flip-face flip-front"><small>Case</small><b>42<em>mm</em></b></div><div class="flip-face flip-back"><h3>Case</h3><p>CuSn8 bronze, 12.8 mm thick, brushed flanks and a polished bevel.</p></div></div></div>
+    <div class="flip" aria-label="Water resistance, tap to turn"><div class="flip-in"><div class="flip-face flip-front"><small>Water resistance</small><b>300<em>m</em></b></div><div class="flip-face flip-back"><h3>Water resistance</h3><p>30 bar, tested in a pressure tank one watch at a time.</p></div></div></div>
+    <div class="flip" aria-label="Power reserve, tap to turn"><div class="flip-in"><div class="flip-face flip-front"><small>Power reserve</small><b>72<em>h</em></b></div><div class="flip-face flip-back"><h3>Movement</h3><p>Automatic, hand-finished rotor, visible through a sapphire caseback.</p></div></div></div>
+    <div class="flip" aria-label="Crystal, tap to turn"><div class="flip-in"><div class="flip-face flip-front"><small>Crystal</small><b>9<em>Mohs</em></b></div><div class="flip-face flip-back"><h3>Crystal</h3><p>Domed sapphire with anti-reflective coating on the inside.</p></div></div></div>
+    <div class="flip" aria-label="Strap, tap to turn"><div class="flip-in"><div class="flip-face flip-front"><small>Strap</small><b>22<em>mm</em></b></div><div class="flip-face flip-back"><h3>Strap</h3><p>Navy FKM rubber with quick-release pins. Swap it without tools.</p></div></div></div>
+    <div class="flip" aria-label="Edition, tap to turn"><div class="flip-in"><div class="flip-face flip-front"><small>Edition</small><b>300<em>pcs</em></b></div><div class="flip-face flip-back"><h3>Edition</h3><p>Numbered on the caseback. One piece for every metre.</p></div></div></div>
+  </div>
+</section>
+
+<section class="over" id="over" aria-label="Worn above and below the waterline">
+  <div class="stick">
+    <div class="layer top"><img src="img/surface.webp" alt="" id="ovTop"></div>
+    <div class="layer bot"><img src="img/surface.webp" alt="The watch worn on a swimmer's wrist half under the water, with the Dubai skyline above" id="ovBot"></div>
+    <div class="line" aria-hidden="true"></div>
+    <div class="otxt"><h2 class="wide" data-split>Half in, half out.</h2><p>Made for the swim from the boat to the reef and the walk back up the beach.</p></div>
+  </div>
+</section>
+
+<section class="reserve" id="reserve" aria-labelledby="rH">
+  <div><p class="big">300</p><h2 id="rH" class="wide">pieces. Numbered.</h2></div>
+  <div>
+    <p>Reserve with a AED 500 deposit. The balance of AED 4,950 is due when your watch is ready for collection in Dubai Design District.</p>
+    <a class="btn" href="https://wa.me/971501657013?text=Hi%20MARSA%2C%20I%27d%20like%20to%20reserve%20a%20Gulf%20Diver%20300.%20(Enquiry%20from%20the%20MARSA%20concept%20page%20by%20Wahjora%20Digital)" target="_blank" rel="noopener" data-magnetic>Reserve on WhatsApp</a>
+  </div>
+</section>
+</main>
+<footer>
+  <span>MARSA is a concept brand. Photography generated with Google Gemini, watch film generated with Google Flow (Veo).</span>
+  <span>Page designed and built by <a href="../../index.html#/work">Wahjora Digital</a></span>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="../_shared/motion.js"></script>
+<script>
+const SEQ = { dir: 'seq/', count: 96 };
+/* live Dubai time */
+const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+const clk = document.getElementById('clock'); setInterval(() => clk.textContent = fmt.format(new Date()), 1000); clk.textContent = fmt.format(new Date());
+
+/* procedural caustics: cheap layered sine net */
+function caustics(cv) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const c = cv.getContext('2d'); let w, h; const rs = () => { w = cv.width = cv.clientWidth / 3; h = cv.height = cv.clientHeight / 3; }; rs(); addEventListener('resize', rs);
+  let vis = true; new IntersectionObserver(e => vis = e[0].isIntersecting).observe(cv);
+  (function f(t) { requestAnimationFrame(f); if (!vis) return; t /= 1000; c.clearRect(0, 0, w, h); c.strokeStyle = 'rgba(184,245,230,.55)'; c.lineWidth = 1;
+    for (let k = 0; k < 14; k++) { c.beginPath(); for (let x = 0; x <= w; x += 8) { const y = h * (k / 14) + Math.sin(x * .03 + t * .9 + k) * 10 + Math.sin(x * .011 - t * .6 + k * 2) * 16; x ? c.lineTo(x, y) : c.moveTo(x, y); } c.stroke(); }
+  })(0);
+}
+
+WJ.boot(W => {
+  W.depthHero(document.getElementById('heroDepth'), { img: 'img/hero.webp', depth: 'img/hero_d.jpg', strength: .035, focus: .45, cx: .72 });
+  W.particles(document.getElementById('bubbles'), { n: 60, color: '200,240,240', rise: -.6, drift: .6, size: [1, 4], shape: 'ring' });
+  W.frameScrub(document.getElementById('turn'), { ...SEQ, fit: 'cover' });
+  caustics(document.getElementById('caustic1'));
+  /* depth gauge across the whole page */
+  const rail = document.getElementById('rail'), dep = document.getElementById('depth');
+  let lastD = -1; ScrollTrigger.create({ start: 0, end: 'max', onUpdate: s => { rail.style.setProperty('--d', s.progress.toFixed(4)); const d = Math.round(s.progress * 300); if (d !== lastD) { lastD = d; dep.textContent = d; } } });
+  /* pressure counter in macro */
+  const bar = document.getElementById('bar');
+  let lastB = -1; ScrollTrigger.create({ trigger: '.macro', start: 'top top', end: 'bottom bottom', onUpdate: s => { const v = Math.round(s.progress * 30); if (v !== lastB) { lastB = v; bar.textContent = v; } } });
+  /* over-under: waterline rises, layers drift apart */
+  const ov = document.getElementById('over');
+  gsap.fromTo(ov, { '--wl': '78%' }, { '--wl': '30%', ease: 'none', scrollTrigger: { trigger: ov, start: 'top top', end: 'bottom bottom', scrub: true } });
+  gsap.fromTo('#ovTop', { yPercent: 0, scale: 1.08 }, { yPercent: -6, scale: 1.08, ease: 'none', scrollTrigger: { trigger: ov, start: 'top top', end: 'bottom bottom', scrub: true } });
+  gsap.fromTo('#ovBot', { yPercent: 0, scale: 1.12 }, { yPercent: 5, scale: 1.18, ease: 'none', scrollTrigger: { trigger: ov, start: 'top top', end: 'bottom bottom', scrub: true } });
+  gsap.from('.hero-copy p, .hero-copy .btn', { y: 30, opacity: 0, duration: 1.2, delay: 1.1, stagger: .1, ease: 'expo.out' });
+});
+</script>
+</body>
+</html>

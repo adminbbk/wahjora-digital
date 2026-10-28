@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.db
+*.sqlite
+dist/
+dist-electron/
+build/
+.next/
+test-results/
+.dev-outbox/
+*.dmg
+.DS_Store

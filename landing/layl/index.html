@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LAYL · Oud & Saffron Extrait</title>
+<meta name="description" content="LAYL, an oud and saffron extrait aged ninety nights. A concept landing page by Wahjora Digital.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:wght@300;400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../_shared/motion.css">
+<style>
+:root{--night:#150c1b;--plum:#2a1532;--wine:#4a1d3a;--saffron:#e3a33b;--amber:#c96b1f;--cream:#f3e6d3;
+  --serif:'Gloock',Georgia,serif;--sans:'Hanken Grotesk',system-ui,sans-serif;--ar:'Amiri',serif}
+body{background:var(--night);color:var(--cream);font:300 17px/1.65 var(--sans)}
+a{color:inherit}
+.curtain{background:var(--saffron)}
+nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px clamp(18px,4vw,56px)}
+nav .logo{font:400 24px var(--serif);letter-spacing:.3em;text-decoration:none}
+nav a.cta{font-size:14px;text-decoration:none;border:1px solid rgba(243,230,211,.35);padding:10px 18px;border-radius:999px;backdrop-filter:blur(8px)}
+
+.hero{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(21,12,27,.85),rgba(21,12,27,0) 55%),linear-gradient(0deg,var(--night),transparent 30%);pointer-events:none}
+.hero-copy{position:absolute;z-index:2;left:clamp(18px,5vw,80px);top:50%;translate:0 -42%;max-width:560px}
+.word{font:400 clamp(90px,15vw,240px)/.8 var(--serif);letter-spacing:.06em;margin:0;color:var(--cream)}
+.ar{font:700 clamp(40px,5vw,72px)/1 var(--ar);color:var(--saffron);margin:12px 0 24px;direction:rtl;text-align:left}
+.hero h1{font:400 clamp(26px,2.6vw,40px)/1.1 var(--serif);margin:0 0 14px}
+.hero p{max-width:420px;opacity:.85;margin:0 0 30px}
+.btn{display:inline-flex;gap:10px;align-items:center;padding:16px 28px;border-radius:999px;background:var(--saffron);color:var(--night);font:600 15px var(--sans);text-decoration:none;border:0;cursor:pointer}
+.btn.ghost{background:none;color:var(--cream);border:1px solid rgba(243,230,211,.4)}
+@media(max-width:760px){.hero::after{background:linear-gradient(0deg,var(--night) 8%,rgba(21,12,27,.2) 70%)}.hero-copy{top:auto;bottom:40px;translate:none}}
+
+/* turntable */
+.turn .scrub-stick{background:radial-gradient(ellipse at 50% 60%,var(--wine),var(--night) 70%)}
+.turn canvas.scrub{mix-blend-mode:normal}
+.turn h2{position:absolute;left:clamp(18px,5vw,80px);top:12vh;margin:0;font:400 clamp(34px,4.6vw,72px)/1 var(--serif);max-width:520px;z-index:3}
+.chap{z-index:3;max-width:280px;padding-left:18px;border-left:1px solid var(--saffron)}
+.chap b{display:block;font:400 26px/1.15 var(--serif);color:var(--saffron);margin-bottom:6px}
+.chap span{font-size:15px;opacity:.85}
+.c1{left:clamp(18px,5vw,80px);bottom:18vh}.c2{right:clamp(18px,5vw,80px);top:30vh}.c3{right:clamp(18px,5vw,80px);bottom:18vh}.c4{left:clamp(18px,5vw,80px);bottom:18vh}
+.deg{position:absolute;right:clamp(18px,5vw,80px);top:12vh;font:400 clamp(40px,5vw,80px)/1 var(--serif);color:rgba(243,230,211,.16);z-index:3}
+@media(max-width:760px){.turn h2{top:10vh;font-size:34px}.chap{left:20px!important;right:20px!important;top:auto!important;bottom:8vh!important;background:rgba(21,12,27,.75);padding:14px 16px;border-radius:12px;max-width:none}.deg{display:none}}
+
+/* notes deck */
+.notes{position:relative;padding:clamp(90px,16vh,180px) clamp(18px,5vw,80px);overflow:hidden}
+.notes .bgword{position:absolute;right:-4vw;top:6vh;font:700 clamp(160px,30vw,460px)/1 var(--ar);color:rgba(227,163,59,.06);pointer-events:none}
+.notes h2,.cap h2,.buy h2,.ritual h2{font:400 clamp(40px,5.6vw,88px)/1 var(--serif);margin:0 0 16px;max-width:820px}
+.notes .lede{max-width:500px;opacity:.85;margin:0 0 70px}
+.flip-deck.fan{grid-template-columns:repeat(3,1fr);max-width:1180px}
+.flip{height:min(560px,72vh)}
+.flip:nth-child(1){rotate:-4deg}.flip:nth-child(2){margin-top:60px}.flip:nth-child(3){rotate:4deg}
+.flip-face{border-radius:22px;border:1px solid rgba(227,163,59,.25)}
+.flip-front{background-size:cover;background-repeat:no-repeat}
+.flip-front::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(21,12,27,.85),transparent 55%)}
+.flip-front .t{position:absolute;left:24px;right:24px;bottom:22px}
+.flip-front .t small{color:var(--saffron);font-size:13px}
+.flip-front .t b{display:block;font:400 32px/1.1 var(--serif)}
+.flip-back{background:linear-gradient(160deg,var(--wine),var(--night));padding:30px;display:flex;flex-direction:column;justify-content:space-between}
+.flip-back h3{font:400 30px/1.1 var(--serif);margin:0;color:var(--saffron)}
+.flip-back p{margin:0;font-size:16px}
+.flip-back .meter{height:4px;border-radius:2px;background:rgba(243,230,211,.15);position:relative}
+.flip-back .meter i{position:absolute;inset:0 auto 0 0;background:var(--saffron);border-radius:2px}
+.turnhint{font-size:13px;opacity:.6;margin-top:36px}
+@media(max-width:860px){.flip-deck.fan{grid-template-columns:1fr}.flip{height:440px;rotate:0deg!important;margin-top:0!important}}
+
+/* cap zoom */
+.cap.zoom-sec .zoom-stick{--zo:42% 18%}
+.cap .zoom-stick::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(21,12,27,.8),transparent 50%)}
+.cap .ztxt{position:absolute;z-index:2;left:clamp(18px,5vw,80px);bottom:12vh;max-width:540px}
+.cap .ztxt p{opacity:.88}
+
+/* strength */
+.buy{padding:clamp(90px,16vh,180px) clamp(18px,5vw,80px);display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center}
+.vial{position:relative;aspect-ratio:3/4;border-radius:200px 200px 24px 24px;overflow:hidden;background:var(--plum)}
+.vial img{width:100%;height:100%;object-fit:cover;transition:filter .9s ease}
+.vial[data-v=day] img{filter:hue-rotate(-14deg) saturate(.7) brightness(1.18)}
+.opts{display:grid;gap:12px;margin:30px 0}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:16px;text-align:left;padding:20px 22px;border-radius:16px;border:1px solid rgba(243,230,211,.2);background:none;color:inherit;font:inherit;cursor:pointer;transition:border-color .3s,background .3s}
+.opt[aria-pressed=true]{border-color:var(--saffron);background:rgba(227,163,59,.08)}
+.opt b{font:400 24px var(--serif);display:block}
+.opt small{opacity:.7}
+.opt .pr{font:400 22px var(--serif);color:var(--saffron);white-space:nowrap}
+@media(max-width:860px){.buy{grid-template-columns:1fr}}
+
+/* ritual */
+.ritual{position:relative;min-height:170vh;padding:16vh clamp(18px,5vw,80px);overflow:hidden}
+.ritual .bg{position:absolute;inset:0}
+.ritual .bg img{width:100%;height:130%;object-fit:cover;opacity:.55}
+.ritual .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--night),rgba(21,12,27,.2) 30%,rgba(21,12,27,.3) 70%,var(--night))}
+.ritual h2{position:relative;z-index:2}
+.step{position:relative;z-index:2;max-width:330px;padding:24px 26px;border-radius:18px;background:rgba(42,21,50,.9);border:1px solid rgba(227,163,59,.22)}
+.step b{font:400 44px/1 var(--serif);color:var(--saffron);display:block;margin-bottom:8px}
+.s1{margin:10vh 0 0 6vw}.s2{margin:-6vh 0 0 50vw}.s3{margin:6vh 0 0 22vw}
+@media(max-width:860px){.s1,.s2,.s3{margin:24px 0 0}}
+
+.end{text-align:center;padding:18vh 20px 12vh}
+.end .ar{text-align:center;font-size:clamp(64px,10vw,140px);margin:0}
+.end h2{font:400 clamp(30px,3.6vw,54px)/1.1 var(--serif);margin:18px auto 28px;max-width:640px}
+footer{padding:30px clamp(18px,5vw,80px) 50px;font-size:14px;opacity:.75;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(243,230,211,.12)}
+</style>
+</head>
+<body>
+<a class="wj-back" href="../../index.html#/work">← Wahjora Digital</a>
+<div class="curtain" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<nav aria-label="LAYL"><a class="logo" href="#top">LAYL</a><a class="cta" href="#buy">Choose yours</a></nav>
+<main id="top">
+<section class="hero" aria-label="Introduction">
+  <canvas class="depth" id="heroDepth" aria-label="The LAYL bottle, amber liquid and a black octagonal cap, with smoke curling behind it"></canvas>
+  <canvas class="motes" id="motes" aria-hidden="true"></canvas>
+  <div class="hero-copy">
+    <p class="word" aria-hidden="true">LAYL</p>
+    <p class="ar" lang="ar" aria-hidden="true">ليل</p>
+    <h1 data-split>A night that lingers.</h1>
+    <p>Oud from Assam, saffron from Herat and a breath of Taif rose, aged for ninety nights before it is bottled.</p>
+    <a class="btn" href="#turn" data-magnetic>Turn the bottle</a>
+  </div>
+</section>
+
+<section class="turn scrub-sec" id="turn" aria-label="The bottle, filmed turning on a plinth">
+  <div class="scrub-stick">
+    <img class="poster" src="img/hero.webp" alt="">
+    <canvas class="scrub"></canvas>
+    <h2>Every side of a night.</h2>
+    <div class="deg" aria-hidden="true"><span id="deg">0</span>°</div>
+    <div class="chap c1" data-at="0-0.26"><b>Cut crystal</b><span>Heavy, faceted, made to catch candlelight from any angle.</span></div>
+    <div class="chap c2" data-at="0.24-0.52"><b>Black octagon cap</b><span>Cut from a single block of resin and banded in brushed gold.</span></div>
+    <div class="chap c3" data-at="0.5-0.78"><b>Numbered by hand</b><span>Each bottle carries its batch and its number under the base.</span></div>
+    <div class="chap c4" data-at="0.76-1.01"><b>50 ml · AED 685</b><span>Gift wrapped and delivered free across the UAE.</span></div>
+  </div>
+</section>
+
+<section class="notes" aria-labelledby="nH">
+  <div class="bgword" aria-hidden="true">عود</div>
+  <h2 id="nH" data-split>It opens bright and ends in smoke.</h2>
+  <p class="lede">Three cards, three moments in one evening. Tap a card to read what you’ll smell.</p>
+  <div class="flip-deck fan">
+    <div class="flip" aria-label="First hour, tap to turn"><div class="flip-in">
+      <div class="flip-face flip-front" style="background-image:url(img/notes.webp);background-position:18% 20%;background-size:260%"><div class="t"><small>First hour</small><b>Saffron & pink pepper</b></div></div>
+      <div class="flip-face flip-back"><h3>First hour</h3><p>A warm, slightly metallic spark from Herat saffron. It fades as your skin warms it.</p><div><small>Intensity</small><div class="meter"><i style="width:92%"></i></div></div></div>
+    </div></div>
+    <div class="flip" aria-label="By evening, tap to turn"><div class="flip-in">
+      <div class="flip-face flip-front" style="background-image:url(img/notes.webp);background-position:60% 70%;background-size:260%"><div class="t"><small>By evening</small><b>Taif rose & labdanum</b></div></div>
+      <div class="flip-face flip-back"><h3>By evening</h3><p>The rose turns jammy and dark, never sweet. Labdanum gives it a resin edge.</p><div><small>Intensity</small><div class="meter"><i style="width:70%"></i></div></div></div>
+    </div></div>
+    <div class="flip" aria-label="Next morning, tap to turn"><div class="flip-in">
+      <div class="flip-face flip-front" style="background-image:url(img/notes.webp);background-position:25% 85%;background-size:240%"><div class="t"><small>Next morning</small><b>Aged oud & ambergris</b></div></div>
+      <div class="flip-face flip-back"><h3>Next morning</h3><p>What is left on your scarf the day after. Smoky, soft, unmistakably yours.</p><div><small>Intensity</small><div class="meter"><i style="width:48%"></i></div></div></div>
+    </div></div>
+  </div>
+  <p class="turnhint">Keyboard: Tab to a card, then Enter to turn it.</p>
+</section>
+
+<section class="cap zoom-sec" data-zoom="2.1" aria-label="Close-up of the gold collar and cap">
+  <div class="zoom-stick">
+    <img src="img/cap.webp" alt="Extreme close-up of the gold collar and black cap with saffron sparks in the air" loading="lazy">
+    <div class="ztxt"><h2 data-split>Closer than you’d ever look.</h2><p>Brushed gold collar, hand-polished. The cap clicks shut with the weight of a door closing in an old house.</p></div>
+  </div>
+</section>
+
+<section class="buy" id="buy" aria-labelledby="bH">
+  <div class="vial" id="vial" data-v="extrait"><img src="img/hero.webp" alt="The LAYL bottle" loading="lazy"></div>
+  <div>
+    <h2 id="bH" data-split>Two strengths. One night.</h2>
+    <p>Extrait is denser and lasts longer. The eau de parfum wears lighter for the day.</p>
+    <div class="opts" role="group" aria-label="Strength">
+      <button class="opt" aria-pressed="true" data-v="extrait" data-name="Layl Extrait"><span><b>Layl Extrait</b><small>30% concentration · 12+ hours</small></span><span class="pr">AED 685</span></button>
+      <button class="opt" aria-pressed="false" data-v="day" data-name="Layl Day"><span><b>Layl Day</b><small>18% concentration · 8 hours</small></span><span class="pr">AED 495</span></button>
+    </div>
+    <a class="btn" id="wa" href="#" target="_blank" rel="noopener" data-magnetic>Order Layl Extrait on WhatsApp</a>
+  </div>
+</section>
+
+<section class="ritual" aria-labelledby="rH" data-pscope>
+  <div class="bg"><img src="img/majlis.webp" alt="" data-speed="0.25" loading="lazy"></div>
+  <h2 id="rH" data-split>Wear it like this.</h2>
+  <div class="step s1" data-speed="-0.6"><b>1</b>Two sprays at the base of the neck, where it stays warm.</div>
+  <div class="step s2" data-speed="0.5"><b>2</b>One on the scarf or ghutra. Fabric holds oud for days.</div>
+  <div class="step s3" data-speed="-0.3"><b>3</b>Don’t rub your wrists. Let the saffron open on its own.</div>
+</section>
+
+<section class="end" aria-labelledby="eH">
+  <p class="ar" lang="ar" aria-hidden="true">ليل</p>
+  <h2 id="eH">Made for the hours after Isha.</h2>
+  <a class="btn" href="#buy" data-magnetic>Choose your strength</a>
+</section>
+</main>
+<footer>
+  <span>LAYL is a concept brand. Photography generated with Google Gemini, bottle film generated with Google Flow (Veo).</span>
+  <span>Page designed and built by <a href="../../index.html#/work">Wahjora Digital</a></span>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="../_shared/motion.js"></script>
+<script>
+const SEQ = { dir: 'seq/', count: 96 };
+WJ.boot(W => {
+  W.depthHero(document.getElementById('heroDepth'), { img: 'img/hero.webp', depth: 'img/hero_d.jpg', strength: .04, focus: .4, cx: .7 });
+  W.particles(document.getElementById('motes'), { n: 80, color: '227,163,59', rise: -.18, drift: .5, size: [.5, 2] });
+  const deg = document.getElementById('deg');
+  W.frameScrub(document.getElementById('turn'), { ...SEQ, fit: 'cover', onProgress: p => deg.textContent = Math.round(p * 360) });
+  gsap.from('.word', { letterSpacing: '0.6em', opacity: 0, duration: 2.2, ease: 'expo.out', delay: .6 });
+  gsap.from('.hero .ar, .hero-copy > p:not(.word), .hero .btn', { y: 30, opacity: 0, duration: 1.2, delay: 1.2, stagger: .12, ease: 'expo.out' });
+});
+const opts = [...document.querySelectorAll('.opt')], wa = document.getElementById('wa'), vial = document.getElementById('vial');
+function pick(o) {
+  opts.forEach(x => x.setAttribute('aria-pressed', x === o)); vial.dataset.v = o.dataset.v;
+  wa.textContent = 'Order ' + o.dataset.name + ' on WhatsApp';
+  wa.href = 'https://wa.me/971501657013?text=' + encodeURIComponent('Hi LAYL, I would like to order ' + o.dataset.name + ' (50 ml). (Enquiry from the LAYL concept page by Wahjora Digital)');
+}
+opts.forEach(o => o.addEventListener('click', () => pick(o))); pick(opts[0]);
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+/* Wahjora motion engine — structural styles. Brand pages set the look via custom properties. */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;overflow-x:hidden}
+img{max-width:100%;display:block}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+
+/* depth hero */
+.hero-ph{position:absolute;inset:0;overflow:hidden;opacity:0;transition:opacity 1.2s ease}
+.hero-ph.on{opacity:1}
+.hero-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);will-change:transform}
+
+/* split words */
+[data-split] .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+[data-split] .w>span{display:inline-block;will-change:transform}
+
+/* scrub film */
+.scrub-sec{position:relative;height:420vh}
+.scrub-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+canvas.scrub{position:absolute;inset:0;width:100%;height:100%}
+.chap{position:absolute;opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .9s cubic-bezier(.16,1,.3,1);pointer-events:none}
+.chap.in{opacity:1;transform:none}
+.scrub-bar{position:absolute;left:0;bottom:0;height:2px;width:calc(var(--p,0)*100%);background:currentColor;opacity:.6}
+
+/* flip cards */
+.flip-deck{display:grid;gap:clamp(16px,2.4vw,32px);perspective:1400px}
+.flip{position:relative;cursor:pointer;outline:none;animation:bob 6s ease-in-out infinite;animation-delay:var(--d,0s);
+  transform-style:preserve-3d;--rx:0deg;--ry:0deg}
+.flip-in{position:relative;width:100%;height:100%;transform-style:preserve-3d;
+  transform:rotateX(var(--rx)) rotateY(calc(var(--ry) + var(--fy,0deg)));transition:transform .9s cubic-bezier(.2,.9,.2,1)}
+.flip.flipped .flip-in{--fy:180deg}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.flip-face::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at var(--gx,50%) var(--gy,30%),rgba(255,255,255,.22),transparent 45%);mix-blend-mode:soft-light}
+.flip-back{transform:rotateY(180deg)}
+.flip:focus-visible .flip-in{outline:2px solid currentColor;outline-offset:6px}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -14px}}
+
+/* horizontal gallery */
+.h-sec{position:relative;overflow:hidden}
+.h-track{display:flex;gap:clamp(16px,3vw,48px);padding:0 6vw;will-change:transform;height:100vh;height:100svh;align-items:center}
+.h-item{flex:0 0 auto}
+.h-img{overflow:hidden}
+.h-img img{width:124%;max-width:none;height:100%;object-fit:cover;margin-left:-12%}
+.h-static .h-track{height:auto;overflow-x:auto;scroll-snap-type:x mandatory;padding-block:10vh}
+.h-static .h-item{scroll-snap-align:center}
+
+/* zoom-through */
+.zoom-sec{position:relative;height:260vh}
+.zoom-stick{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.zoom-stick img{width:100%;height:100%;object-fit:cover;transform-origin:var(--zo,50% 50%)}
+
+/* particles + grain */
+.motes{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.grain{position:fixed;inset:-50%;pointer-events:none;z-index:90;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}}
+
+/* page intro curtain */
+.curtain{position:fixed;inset:0;z-index:100;pointer-events:none;transform-origin:top;transition:transform 1.2s cubic-bezier(.76,0,.24,1) .2s}
+.ready .curtain{transform:scaleY(0)}
+
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+
+@media (prefers-reduced-motion:reduce){
+  .flip{animation:none}.grain{animation:none}.chap{transition:none}
+  .scrub-sec{height:auto}.scrub-stick{position:relative}
+  .zoom-sec{height:auto}.zoom-stick{position:relative;height:70vh}
+}
+
+/* fallback when a film's frames are unavailable */
+.scrub-stick .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s}
+.noframes .scrub-stick .poster{opacity:1;transform:scale(calc(1.02 + var(--p,0)*.06))}
+
+/* back to the Wahjora site */
+.wj-back{position:fixed;left:16px;bottom:16px;z-index:95;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;
+  background:rgba(12,12,14,.72);color:#fff;font:600 13px/1 system-ui,sans-serif;text-decoration:none;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.18);transition:background .3s}
+.wj-back:hover{background:rgba(12,12,14,.9)}
+
+/* ===== hover & press polish ===== */
+.btn{transition:filter .3s ease,box-shadow .4s ease,background .3s ease,color .3s ease}
+.btn:active{scale:.97;transition-duration:.08s}
+nav ul a,nav a.cta{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .4s cubic-bezier(.2,.7,.2,1),border-color .3s,color .3s}
+nav a.cta{background-position:50% calc(100% - 7px)}
+.opt,.sizes button,.show-tabs button{transition:border-color .3s,background .3s,color .3s,transform .3s}
+@media(hover:hover) and (pointer:fine){
+  .btn:hover{filter:brightness(1.07);box-shadow:0 16px 36px -14px rgba(0,0,0,.45)}
+  nav ul a:hover{background-size:100% 1px}
+  nav a.cta:hover{background-size:calc(100% - 36px) 1px}
+  .flip:hover{animation-play-state:paused}
+  .opt:hover{border-color:currentColor}
+  .sizes button:hover{border-color:currentColor;transform:translateY(-2px)}
+  .h-img img{transition:filter .6s ease}
+  .h-img:hover img{filter:brightness(1.06) saturate(1.06)}
+}
